@@ -8,8 +8,6 @@ function makeHTML(data) {
 		let id = data.category[i].id;
 		let title = data.category[i].title;
 
-		console.info(data.category[i]);
-
 		let createButton = `
 					<div class="col-md-4" id="searchable">
 						<button type="button" class="btn btn-default">
