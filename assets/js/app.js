@@ -21,42 +21,44 @@ function makeHTML(data) {
 					`;
 
 		document.getElementById('table').innerHTML += createButton;
+		// $('table').prepend('Hello world');
+		console.log($('table').html('Hello world'));
 	});
 }
 
-function getRandomNetflixCategory(data) {
-
-	$(data.category).each(function (i) {
-
-		var randomCategory = data.category[Math.floor(Math.random() * data.category[i].id.length)];
-
-		let createModal = 	`
-			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							<h4 class="modal-title" id="myModalLabel">Congratulations!</h4>
-						</div>
-						<div class="modal-body">
-							<p>Look what we found! Would you like to watch: <a href="https://www.netflix.com/browse/genre/${randomCategory}" 
-							target="_blank">${randomCategory}</a> today?</p>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
-						</div>
-					</div>
-				</div>
-			 </div>
-			`;
-
-		document.getElementById('table').innerHTML += createModal;
-	});
-}
+// function getRandomNetflixCategory(data) {
+//
+// 	$(data.category).each(function (i) {
+//
+// 		let randomCategory = data.category[Math.floor(Math.random() * data.category[i].id.length)];
+//
+// 		let createModal = `
+// 			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+// 				<div class="modal-dialog" role="document">
+// 					<div class="modal-content">
+// 						<div class="modal-header">
+// 							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+// 							<h4 class="modal-title" id="myModalLabel">Congratulations!</h4>
+// 						</div>
+// 						<div class="modal-body">
+// 							<p>Look what we found! Would you like to watch: <a href="https://www.netflix.com/browse/genre/${randomCategory}"
+// 							target="_blank">${randomCategory}</a> today?</p>
+// 						</div>
+// 						<div class="modal-footer">
+// 							<button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
+// 						</div>
+// 					</div>
+// 				</div>
+// 			</div>
+// 			`;
+//
+// 		document.getElementById('table').innerHTML += createModal;
+// 	});
+// }
 
 function fetchAll(data) {
 	makeHTML(data);
-	getRandomNetflixCategory(data);
+	// getRandomNetflixCategory(data);
 }
 
 $(document).ready(function () {
@@ -73,7 +75,7 @@ $(document).ready(function () {
 
 	$('#filter').keyup(function () {
 
-		var rex = new RegExp($(this).val(), 'i');
+		let rex = new RegExp($(this).val(), 'i');
 		$('.col-md-4#searchable').hide();
 		$('.col-md-4#searchable').filter(function () {
 			return rex.test($(this).text());
